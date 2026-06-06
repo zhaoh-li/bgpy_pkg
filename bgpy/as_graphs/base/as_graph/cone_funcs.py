@@ -21,7 +21,7 @@ def _get_and_store_customer_cone_and_set_size(self, store_asns: bool = False) ->
     non_edges: list[AS] = []
     cone_dict: dict[int, set[int]] = {}
     for as_obj in self:
-        if as_obj.stub or as_obj.multihomed:
+        if len(as_obj.customers) == 0:
             as_obj.customer_cone_size = 0
             cone_dict[as_obj.asn] = set()
             if store_asns:
